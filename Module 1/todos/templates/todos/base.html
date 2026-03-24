@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{% block title %}TODO App{% endblock %}</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: system-ui, -apple-system, sans-serif;
+      background: #f5f5f5;
+      color: #222;
+      min-height: 100vh;
+    }
+
+    header {
+      background: #2563eb;
+      color: white;
+      padding: 1rem 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    header h1 { font-size: 1.4rem; font-weight: 700; }
+    header a { color: white; text-decoration: none; }
+
+    .container {
+      max-width: 760px;
+      margin: 2rem auto;
+      padding: 0 1rem;
+    }
+
+    .messages { margin-bottom: 1rem; }
+    .message {
+      padding: .75rem 1rem;
+      border-radius: 6px;
+      background: #dcfce7;
+      border: 1px solid #86efac;
+      color: #166534;
+      margin-bottom: .5rem;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: .45rem .9rem;
+      border-radius: 6px;
+      border: none;
+      cursor: pointer;
+      font-size: .875rem;
+      font-weight: 500;
+      text-decoration: none;
+      transition: opacity .15s;
+    }
+    .btn:hover { opacity: .85; }
+    .btn-primary { background: #2563eb; color: white; }
+    .btn-secondary { background: #e5e7eb; color: #374151; }
+    .btn-danger { background: #ef4444; color: white; }
+    .btn-sm { padding: .3rem .65rem; font-size: .8rem; }
+
+    .form-control {
+      width: 100%;
+      padding: .5rem .75rem;
+      border: 1px solid #d1d5db;
+      border-radius: 6px;
+      font-size: 1rem;
+      margin-top: .25rem;
+    }
+    .form-control:focus { outline: 2px solid #2563eb; border-color: transparent; }
+
+    .form-group { margin-bottom: 1.25rem; }
+    .form-group label { font-weight: 500; font-size: .9rem; }
+
+    .card {
+      background: white;
+      border-radius: 10px;
+      box-shadow: 0 1px 3px rgba(0,0,0,.08);
+      padding: 1.5rem;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1><a href="{% url 'todo_list' %}">My TODOs</a></h1>
+    <a href="{% url 'todo_create' %}" class="btn btn-secondary btn-sm">+ New TODO</a>
+  </header>
+
+  <div class="container">
+    {% if messages %}
+      <div class="messages">
+        {% for message in messages %}
+          <div class="message">{{ message }}</div>
+        {% endfor %}
+      </div>
+    {% endif %}
+
+    {% block content %}{% endblock %}
+  </div>
+</body>
+</html>
