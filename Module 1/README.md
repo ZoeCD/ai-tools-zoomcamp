@@ -18,8 +18,8 @@ A simple TODO web application built with Django, managed with `uv`.
 
 **1. Clone the repo:**
 ```bash
-git clone <your-repo-url>
-cd <repo-folder>
+git clone ZoeCD/ai-tools-zoomcamp
+cd ai-tools-zoomcamp
 ```
 
 **2. Install dependencies:**
